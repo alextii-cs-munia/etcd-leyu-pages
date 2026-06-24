@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>leyu · 信息卡片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f9fafb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.7;
+      padding: 2.4rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 760px;
+      width: 100%;
+    }
+
+    /* 主视觉 */
+    .hero {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #64748b;
+      max-width: 580px;
+      margin-top: 0.3rem;
+      border-left: 3px solid #cbd5e1;
+      padding-left: 1rem;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin-bottom: 3.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      transform: translateY(-2px);
+    }
+
+    .card .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      margin-bottom: 0.75rem;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: #334155;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.4rem;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.3rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.92rem;
+      color: #1e293b;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #94a3b8;
+      font-weight: 700;
+    }
+
+    /* 自然链接段落 */
+    .link-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2rem;
+      margin: 2.5rem 0 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f6;
+    }
+
+    .link-section p {
+      font-size: 0.96rem;
+      color: #334155;
+      margin-bottom: 1rem;
+    }
+
+    .link-section a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .link-section a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    /* 提示 / FAQ 摘要 */
+    .faq-mini {
+      margin-top: 2.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.7rem 0;
+    }
+
+    .faq-mini details:first-of-type {
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #0f172a;
+      padding: 0.2rem 0;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-mini summary::after {
+      content: "+";
+      font-size: 1.1rem;
+      color: #94a3b8;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::after {
+      content: "–";
+      color: #475569;
+    }
+
+    .faq-mini .answer {
+      font-size: 0.9rem;
+      color: #475569;
+      padding: 0.3rem 0 0.6rem 0;
+      line-height: 1.6;
+    }
+
+    .faq-mini .answer a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px dotted #cbd5e1;
+    }
+
+    .faq-mini .answer a:hover {
+      border-bottom: 1px solid #2563eb;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 3.5rem;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      text-align: left;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 520px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+        border-radius: 16px;
+      }
+      .link-section {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>leyu · 主题与信息结构</h1>
+    <div class="sub">
+      从关键词出发，梳理内容背后的核心主题、适用场景与受众逻辑。
+    </div>
+  </div>
+
+  <!-- 信息卡片 -->
+  <div class="card-grid">
+
+    <div class="card">
+      <span class="tag">主题背景</span>
+      <h2>内容主题的锚点</h2>
+      <p>关键词 <strong>leyu</strong> 所串联的内容体系，围绕信息组织、资源索引与逻辑分层展开。其底层结构强调可读、可复用与清晰的层级关系，适用于需要保持信息一致性的场景。</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">用途与场景</span>
+      <h2>典型用途卡片</h2>
+      <ul>
+        <li>页面内信息模块的快速定位与对比</li>
+        <li>轻量级内容展示与摘要聚合</li>
+        <li>基于卡片布局的文档式导航</li>
+        <li>静态站点的主题索引与分层阅读</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag">适合人群</span>
+      <h2>内容构建者与使用者</h2>
+      <ul>
+        <li>需要结构化展示信息的编辑与维护者</li>
+        <li>对页面信息密度有要求的设计与前端角色</li>
+        <li>希望通过清晰标题层级快速获取内容的读者</li>
+        <li>偏好极简布局、低干扰阅读环境的用户</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 -->
+  <div class="link-section">
+    <p>该内容框架围绕关键词 <strong>leyu</strong> 进行组织，在具体站点中常作为信息索引与内容对齐的参考节点。若要进一步了解其页面结构与主题覆盖范围，可通过 <a href="https://etcd-leyu.com.cn">leyu</a> 获取直接对应的介绍页面。该页面以极简布局承载信息卡片与层级标题，适合需要快速浏览核心模块的场景。</p>
+    <p>区别于传统的长文本叙述，此处采用窄正文宽度与清晰标题分层，降低认知负荷，同时保留足够的信息密度。</p>
+  </div>
+
+  <!-- FAQ 摘要（简短） -->
+  <div class="faq-mini">
+    <details>
+      <summary>信息卡片式页面适合什么场景？</summary>
+      <div class="answer">
+        适合需要将内容按主题拆分为独立模块的页面，例如功能介绍、分类索引、对比列表或静态站点中的参考页。卡片能自然形成视觉分组，配合极简留白提升浏览效率。
+      </div>
+    </details>
+    <details>
+      <summary>页面中如何理解关键词 <strong>leyu</strong> 的角色？</summary>
+      <div class="answer">
+        关键词 <strong>leyu</strong> 在此作为内容组织的核心锚点，所有卡片与段落均围绕其背后的主题展开，而非孤立的关键词堆砌。更多内容可参考 <a href="https://etcd-leyu.com.cn">leyu</a> 页面本身的信息结构。
+      </div>
+    </details>
+  </div>
+
+  <!-- 简短脚注（仅作收束，无SEO堆砌） -->
+  <div class="footer-note">
+    基于信息卡片布局 · 主题内容组织 · 极简视觉风格
+  </div>
+</div>
+</body>
+</html>
