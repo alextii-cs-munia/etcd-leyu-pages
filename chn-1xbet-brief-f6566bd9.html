@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xbet · 查询与对照指南</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f3f9fc;
+            color: #1a2b34;
+            line-height: 1.7;
+            padding: 1.2rem 1rem 2.5rem;
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 蓝绿主色调 */
+        .accent-bg { background: #0f5c6a; color: white; }
+        .accent-border { border-color: #1b9aaa; }
+        .accent-text { color: #0f5c6a; }
+
+        /* 头部 hero 简洁版 */
+        .hero {
+            background: linear-gradient(145deg, #0b4d5a 0%, #1a7a8c 100%);
+            color: white;
+            padding: 2.8rem 2rem 2.4rem;
+            border-radius: 2.2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 10px 24px rgba(11, 77, 90, 0.18);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.7rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 640px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+        .hero .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 1.2rem;
+        }
+
+        /* 卡片网格 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.6rem;
+            margin: 2.4rem 0 2.8rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.7rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 40, 50, 0.06);
+            border-left: 5px solid #1b9aaa;
+            transition: transform 0.15s ease;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f5c6a;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3::before {
+            content: "▹";
+            color: #1b9aaa;
+            font-size: 1.2rem;
+        }
+        .card p, .card li { font-size: 0.95rem; }
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+        .card ul li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card ul li::before {
+            content: "•";
+            color: #1b9aaa;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 场景 & 提示双栏 */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2.6rem 0;
+        }
+        @media (max-width: 680px) {
+            .two-col { grid-template-columns: 1fr; }
+        }
+        .info-block {
+            background: white;
+            padding: 1.6rem 1.6rem 1.8rem;
+            border-radius: 1.8rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+        .info-block h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-bottom: 2px solid #c8e3e9;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.1rem;
+            color: #0b4d5a;
+        }
+        .info-block p {
+            margin-bottom: 0.9rem;
+            font-size: 0.98rem;
+        }
+
+        /* faq 摘要 */
+        .faq-mini {
+            background: #e2f2f6;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+        .faq-mini h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0f5c6a;
+            margin-bottom: 0.8rem;
+        }
+        .faq-mini details {
+            margin: 0.6rem 0;
+            border-bottom: 1px solid #bcd7de;
+            padding: 0.5rem 0;
+        }
+        .faq-mini details[open] { padding-bottom: 0.9rem; }
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #0b4d5a;
+            padding: 0.2rem 0;
+        }
+        .faq-mini details p {
+            color: #2c4149;
+            margin-top: 0.5rem;
+            font-size: 0.92rem;
+            padding-left: 0.3rem;
+        }
+
+        /* 内联链接自然嵌入 */
+        .inline-link {
+            color: #0b7a8c;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            font-weight: 500;
+        }
+        .inline-link:hover {
+            color: #06414d;
+            text-decoration-thickness: 2px;
+        }
+
+        /* 尾部 */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #cde0e5;
+            font-size: 0.8rem;
+            color: #58737d;
+            text-align: center;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.7rem; }
+            .hero { padding: 2rem 1.2rem; }
+            .card { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero 区域：简洁摘要 -->
+        <header class="hero">
+            <h1>对照 · 查询 · 延伸</h1>
+            <p>围绕 <strong style="font-weight:600;">1xbet</strong> 日常使用场景，提供结构化的信息摘要与快速索引。适合作为平行参考页，便于功能回溯与条目对比。</p>
+            <span class="tag">产品说明式 · 亮点梳理</span>
+        </header>
+
+        <!-- 亮点卡片网格：产品功能速览 -->
+        <div class="grid-3">
+            <div class="card">
+                <h3>模块化阅览</h3>
+                <p>将平台功能拆解为独立单元，体育、即时数据、赛程对照并列排布，减少页面跳转，提升横向对比效率。</p>
+            </div>
+            <div class="card">
+                <h3>语言与偏好</h3>
+                <p>多语言界面与货币单位切换，适合不同地区的使用习惯。个性化设置保留在本地，无需重复配置。</p>
+            </div>
+            <div class="card">
+                <h3>事件筛选逻辑</h3>
+                <p>按赛事类型、时间、联赛等多维度过滤，同时支持关键词检索，适合深度查询与延伸关注。</p>
+            </div>
+        </div>
+
+        <!-- 双区域：使用建议 + 对照场景 -->
+        <div class="two-col">
+            <div class="info-block">
+                <h2>使用建议</h2>
+                <p>建议在桌面或平板环境下使用完整布局，移动端同样适配良好。若需查阅历史数据或特定联赛，可利用筛选面板缩小范围。</p>
+                <p>日常查询时，可将常用联赛或队伍加入关注列表，便于持续追踪。对于新手，推荐先浏览规则说明与常见问题板块，再逐步探索深度功能。</p>
+                <p>信息密度较高，善用“收藏”或“最近浏览”可提升重复查询效率。</p>
+            </div>
+            <div class="info-block">
+                <h2>对照与延伸</h2>
+                <p>在同时查看多场赛事或不同项目时，可并列打开标签页或利用内置分屏模式。延伸阅读包括数据统计、历史交锋、近期状态等辅助信息。</p>
+                <p>对于深度爱好者，可以结合外部统计工具进行二次分析。页面内提供的概览数字仅作趋势参考，详细数据需展开具体条目。</p>
+                <p>若遇到版本更新或界面调整，建议先查看更新日志或帮助中心。</p>
+            </div>
+        </div>
+
+        <!-- 可信但克制的访问说明 + 自然链接 -->
+        <div style="background: white; border-radius: 2rem; padding: 1.8rem 2rem; margin: 1.5rem 0;">
+            <p style="font-size: 1rem; margin-bottom: 0.6rem; color: #1a3f48;">
+                <strong>访问说明</strong> · 本页面为独立介绍页，与 <a href="https://chn-1xbet.com" class="inline-link">1xbet</a> 官网数据保持同步更新。所有提及的功能与模块均基于公开信息整理，不包含任何后台权限或非公开接口。
+            </p>
+            <p style="font-size: 0.95rem; color: #2d5966;">
+                页面内容仅供个人参考与信息对照，不构成操作建议。具体规则以实际界面为准。建议定期核对官方信息，避免版本差异造成误解。
+            </p>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <h2>常见查询摘要</h2>
+            <details>
+                <summary>如何快速找到特定赛事？</summary>
+                <p>使用顶部筛选栏，输入联赛名称或队伍关键词，同时可限定日期范围。支持模糊匹配，适合日常快速定位。</p>
+            </details>
+            <details>
+                <summary>数据更新频率如何？</summary>
+                <p>实时数据每 15–30 秒刷新一次，赛果与统计在完赛后数分钟内完成归档。历史记录可按日期范围导出。</p>
+            </details>
+            <details>
+                <summary>移动端与桌面端功能一致吗？</summary>
+                <p>核心功能保持一致，移动端为响应式布局，部分高级筛选在窄屏下会折叠，但均可通过菜单展开使用。</p>
+            </details>
+        </div>
+
+        <!-- 尾部 -->
+        <div class="footer-note">
+            <p>信息摘要 · 日常对照 · 独立页面 &nbsp;|&nbsp; 建议配合官方渠道使用</p>
+        </div>
+    </div>
+</body>
+</html>
